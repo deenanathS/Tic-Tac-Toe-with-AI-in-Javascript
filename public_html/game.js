@@ -1,3 +1,5 @@
+
+
 function init(player, OPPONENT){
     // SELECT CANAVS
     const canvas = document.getElementById("cvs");
@@ -8,31 +10,6 @@ function init(player, OPPONENT){
     const COLUMN = 3;
     const ROW = 3;
     const SPACE_SIZE = 150;
-
-    // STORE PLAYER'S MOVES
-    let gameData = new Array(9);
-    
-    // By default the first player to play is the human
-    let currentPlayer = player.man;
-
-    // load X & O images
-    const xImage = new Image();
-    xImage.src = "img/X.png";
-
-    const oImage = new Image();
-    oImage.src = "img/O.png";
-
-    // Win combinations
-    const COMBOS = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ];
 
     // FOR GAME OVER CHECK
     let GAME_OVER = false;
@@ -55,6 +32,13 @@ function init(player, OPPONENT){
         }
     }
     drawBoard();
+    
+    
+    // STORE PLAYER'S MOVES
+    let gameData = new Array(9);
+    
+    // By default the first player to play is the human
+    let currentPlayer = player.man;
 
     // ON PLAYER'S CLICK
     canvas.addEventListener("click", function(event){
@@ -103,6 +87,17 @@ function init(player, OPPONENT){
 
     });
 
+        // Win combinations
+    const COMBOS = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];  
     
     // check for a winner
     function isWinner(gameData, player){
@@ -147,6 +142,16 @@ function init(player, OPPONENT){
         gameOverElement.classList.remove("hide");
     }
 
+    
+    // load X & O images
+    const xImage = new Image();
+    xImage.src = "img/X.png";
+
+    const oImage = new Image();
+    oImage.src = "img/O.png";
+
+    
+    
     // draw on board
     function drawOnBoard(player, i, j){
         let img = player === "X" ? xImage : oImage;
