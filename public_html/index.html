@@ -142,8 +142,9 @@ and open the template in the editor.
             }
         </style>
     </head>
-    <body>
-        <div class="container">
+    <body id="test">
+        
+        <div class="container" id="container">
         <canvas id="cvs" width="450" height="450"></canvas>
         <div class="options">
             <h1 class="glow">Tic Tac Toe</h1>
@@ -160,6 +161,8 @@ and open the template in the editor.
         </div>
         <div class="gameover hide"></div>
     </div>
+        
+       
 
     <script src="options.js"></script>
     <script src="game.js"></script>
@@ -194,11 +197,35 @@ and open the template in the editor.
             </div>
             <p class="themes-btn"><i class="fa fa-cog fa-3x fa-spin" aria-hidden="true"></i></p>
         </div>  
+    
         
+        
+    
+        <script type="text/javascript" >
+   
+        var body = document.getElementById('test');
+        var except = document.getElementById('container');
+
+        body.addEventListener("click", function () {
+            alert("Please click on Canvas");
+        });
+        except.addEventListener("click", function (ev) {
+            
+             ev.stopPropagation(); 
+        });
+            
+        </script>
+        
+        
+        
+    
+    
+    
+    
         <script>
             $(document).ready(function(){
             $('ul.theme-colors li').click(function(){
-                $('body,nav, footer.page-footer').css('background',$(this).css('color'));
+                $('body').css('background',$(this).css('color'));
                 
             });
             
@@ -209,8 +236,10 @@ and open the template in the editor.
             $('p.themes-btn').click(function(){
                 $('.colors').toggleClass('active');
             });
-            
             });
+            
         </script>
+       
+
     </body>
 </html>
